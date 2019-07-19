@@ -4,9 +4,8 @@ import { Provider } from 'react-redux'
 
 import RoutesList from './routes/';
 import storeConfigurer from './store/'
-import { getBooks } from './actions/book'
+import './index.css';
 const store = storeConfigurer()
-store.dispatch(getBooks())
 
 ReactDOM.render(
   <Provider store={store}>

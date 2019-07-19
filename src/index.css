@@ -1,0 +1,55 @@
+.ml-10 {
+    margin-left: 10px;
+}
+
+.appContainer {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.cardSelected {
+    background-color: red;
+}
+
+.cardContainer {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: 170px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.cardCoverImageContainer {
+    width: 100%; 
+    height: 240px;
+    position: relative;
+}
+
+.cardCoverImageContainer img {
+    width: 170px;
+    height: 240px;
+}
+
+.titleCard {
+    display: inline-block;
+    padding-left: 10px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 12px 0px;
+}
+
+.titleCard > div {
+    font-size: 12px; 
+    font-weight: 600;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}  
+
+.titleCard span {
+    font-size: 10px;
+}
