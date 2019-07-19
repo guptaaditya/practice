@@ -9,13 +9,20 @@ export default class AddBook extends React.Component {
         this.onBookSave = this.onBookSave.bind(this);
     }
 
-    static getDerivedStateFromProps(props) {
-        return props.editBook || {
+    state = {};
+
+    static getDerivedStateFromProps(props, state) {
+        if (props.editBook) return props.editBook;
+        else if (props.newBook) return state;
+        return {
+            id: 0,
             title: '',
             description: '',
             author: '',
             price: '',
             coverImage: '',
+            createdAt: '',
+            updatedAt: '',
         };
     }
 
@@ -30,17 +37,16 @@ export default class AddBook extends React.Component {
     }
 
     render() {
-        const { props: { onEditBookClose, onAddBookClose }, state: { id } } = this;
+        const { props: { onEditBookClose, onAddBookClose, newBook, editBook }, state: { id } } = this;
+        if (!newBook && !editBook) return null;
         return (
-            <div className="row">
-                <FormModal title={id ? 'Edit book' : 'Add a book'} actionText='Save' onClose={id ? onEditBookClose : onAddBookClose} actionHandler={this.onBookSave}>
-                    <TextField placeholder='Please enter book title' onChange={e => this.setState({ title: e.target.value })} value={this.state.title} />
-                    <TextField placeholder='Please enter book description' onChange={e => this.setState({ description: e.target.value })} value={this.state.description} />
-                    <TextField placeholder='Please enter author name' onChange={e => this.setState({ author: e.target.value })} value={this.state.author} />
-                    <TextField placeholder='Please enter book price' onChange={e => this.setState({ price: e.target.value })} value={this.state.price} />
-                    <TextField placeholder='Please enter cover image url' onChange={e => this.setState({ coverImage: e.target.value })} value={this.state.coverImage} />
-                </FormModal>
-            </div>
+            <FormModal title={id ? 'Edit book' : 'Add a book'} actionText='Save' onClose={id ? onEditBookClose : onAddBookClose} actionHandler={this.onBookSave}>
+                <TextField placeholder='Please enter book title' onChange={e => this.setState({ title: e.target.value })} value={this.state.title} />
+                <TextField placeholder='Please enter book description' onChange={e => this.setState({ description: e.target.value })} value={this.state.description} />
+                <TextField placeholder='Please enter author name' onChange={e => this.setState({ author: e.target.value })} value={this.state.author} />
+                <TextField placeholder='Please enter book price' onChange={e => this.setState({ price: e.target.value })} value={this.state.price} />
+                <TextField placeholder='Please enter cover image url' onChange={e => this.setState({ coverImage: e.target.value })} value={this.state.coverImage} />
+            </FormModal>
         );
     }
 }

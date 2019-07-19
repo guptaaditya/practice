@@ -22,7 +22,7 @@ export default class Home extends React.Component {
   }
 
   render(){
-    const { editBook, newBook, enableEdit, enableDelete } = this.props;
+    const { enableEdit, enableDelete } = this.props;
     return (
       <div className="container">
         <div className="row">
@@ -32,8 +32,7 @@ export default class Home extends React.Component {
         </div>
         <SearchBox search={this.searchBooks} />
         <BookList />
-        {newBook && <AddBook />}
-        {editBook && <AddBook editBook={editBook} />}
+        <AddBook />
       </div>
     )
   }
